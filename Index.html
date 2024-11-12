@@ -1,13 +1,170 @@
-<!DOCTYPE html>
+
+
+    <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5; url=https://www.shein.com">
-    <title>Redirection vers Shein</title>
+    <title>Benjay&chechew</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product h3 {
+            color: #333;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product p {
+            color: #777;
+            font-size: 14px;
+        }
+        .button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        #cartButton {
+            display: block;
+            margin: 20px auto;
+            background-color: #ff6600;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue ! Vous allez être redirigé vers Shein...</h1>
-    <p>Si vous n'êtes pas redirigé automatiquement, <a href="https://www.shein.com">cliquez ici pour visiter Shein</a>.</p>
+
+<header>
+    <h1>Bienvenue sur Benjay&chechew</h1>
+    <p>Explorez une sélection de produits sans prix ni informations personnelles.</p>
+</header>
+
+<!-- Formulaire pour entrer un code -->
+<div id="codeAccess">
+    <form onsubmit="checkCode(event)">
+        <label for="codeInput">Entrez le code pour accéder au site :</label>
+        <input type="text" id="codeInput" placeholder="Entrez le code ici" required>
+        <button type="submit">Accéder</button>
+    </form>
+</div>
+
+<!-- Conteneur des produits -->
+<div id="productContainer" style="display:none;">
+    <div class="container">
+        <!-- Exemple de produit 1 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Produit 1">
+            <h3>Produit 1</h3>
+            <p>Exemple de produit Shein - Description sans prix</p>
+            <button class="button" onclick="addToCart('Produit 1')">Ajouter au panier</button>
+        </div>
+        <!-- Exemple de produit 2 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Produit 2">
+            <h3>Produit 2</h3>
+            <p>Exemple de produit Shein - Description sans prix</p>
+            <button class="button" onclick="addToCart('Produit 2')">Ajouter au panier</button>
+        </div>
+        <!-- Exemple de produit 3 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Produit 3">
+            <h3>Produit 3</h3>
+            <p>Exemple de produit Shein - Description sans prix</p>
+            <button class="button" onclick="addToCart('Produit 3')">Ajouter au panier</button>
+        </div>
+    </div>
+
+    <!-- Panier -->
+    <button id="cartButton" onclick="viewCart()">Voir mon panier</button>
+</div>
+
+<!-- Affichage du panier -->
+<div id="cartModal" style="display:none; padding: 20px; background-color: white; border-radius: 8px; margin: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <h3>Votre Panier</h3>
+    <ul id="cartItems"></ul>
+    <button onclick="closeCart()">Fermer</button>
+</div>
+
+<script>
+    // Code d'accès
+    const correctCode = "0326";
+    let cart = [];
+
+    function checkCode(event) {
+        event.preventDefault();
+        const userCode = document.getElementById('codeInput').value;
+        if (userCode === correctCode) {
+            document.getElementById('productContainer').style.display = 'block';
+            document.getElementById('codeAccess').style.display = 'none';
+        } else {
+            alert("Code incorrect. Veuillez réessayer.");
+        }
+    }
+
+    // Ajouter un produit au panier
+    function addToCart(productName) {
+        cart.push(productName);
+        alert(productName + " a été ajouté au panier.");
+    }
+
+    // Afficher le panier
+    function viewCart() {
+        let cartList = document.getElementById('cartItems');
+        cartList.innerHTML = ''; // Clear current cart
+        if (cart.length === 0) {
+            cartList.innerHTML = '<li>Votre panier est vide.</li>';
+        } else {
+            cart.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = item;
+                cartList.appendChild(li);
+            });
+        }
+        document.getElementById('cartModal').style.display = 'block';
+    }
+
+    // Fermer le panier
+    function closeCart() {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
