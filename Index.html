@@ -1,6 +1,4 @@
-
-
-    <!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -73,7 +71,7 @@
 
 <header>
     <h1>Bienvenue sur Benjay&chechew</h1>
-    <p>Explorez une sélection de produits sans prix ni informations personnelles.</p>
+    <p>Accédez aux meilleurs produits Shein sans prix ni informations personnelles.</p>
 </header>
 
 <!-- Formulaire pour entrer un code -->
@@ -88,44 +86,39 @@
 <!-- Conteneur des produits -->
 <div id="productContainer" style="display:none;">
     <div class="container">
-        <!-- Exemple de produit 1 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 1">
             <h3>Produit 1</h3>
             <p>Exemple de produit Shein - Description sans prix</p>
-            <button class="button" onclick="addToCart('Produit 1')">Ajouter au panier</button>
+            <a href="https://www.shein.com/Produit-1" target="_blank">
+                <button class="button">Voir sur Shein</button>
+            </a>
         </div>
-        <!-- Exemple de produit 2 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 2">
             <h3>Produit 2</h3>
             <p>Exemple de produit Shein - Description sans prix</p>
-            <button class="button" onclick="addToCart('Produit 2')">Ajouter au panier</button>
+            <a href="https://www.shein.com/Produit-2" target="_blank">
+                <button class="button">Voir sur Shein</button>
+            </a>
         </div>
-        <!-- Exemple de produit 3 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 3">
             <h3>Produit 3</h3>
             <p>Exemple de produit Shein - Description sans prix</p>
-            <button class="button" onclick="addToCart('Produit 3')">Ajouter au panier</button>
+            <a href="https://www.shein.com/Produit-3" target="_blank">
+                <button class="button">Voir sur Shein</button>
+            </a>
         </div>
     </div>
 
     <!-- Panier -->
-    <button id="cartButton" onclick="viewCart()">Voir mon panier</button>
-</div>
-
-<!-- Affichage du panier -->
-<div id="cartModal" style="display:none; padding: 20px; background-color: white; border-radius: 8px; margin: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-    <h3>Votre Panier</h3>
-    <ul id="cartItems"></ul>
-    <button onclick="closeCart()">Fermer</button>
+    <button id="cartButton" onclick="alert('Panier vide. Ajoutez des produits en cliquant sur "Voir sur Shein"')">Panier</button>
 </div>
 
 <script>
     // Code d'accès
     const correctCode = "0326";
-    let cart = [];
 
     function checkCode(event) {
         event.preventDefault();
@@ -136,45 +129,18 @@
         } else {
             alert("Code incorrect. Veuillez réessayer.");
         }
-    }
-
-    // Ajouter un produit au panier
-    function addToCart(productName) {
-        cart.push(productName);
-        alert(productName + " a été ajouté au panier.");
-    }
-
-    // Afficher le panier
-    function viewCart() {
-        let cartList = document.getElementById('cartItems');
-        cartList.innerHTML = ''; // Clear current cart
-        if (cart.length === 0) {
-            cartList.innerHTML = '<li>Votre panier est vide.</li>';
-        } else {
-            cart.forEach(item => {
-                let li = document.createElement('li');
-                li.textContent = item;
-                cartList.appendChild(li);
-            });
-        }
-        document.getElementById('cartModal').style.display = 'block';
-    }
-
-    // Fermer le panier
-    function closeCart() {
-        document.getElementById('cartModal').style.display = 'none';
     }
 </script>
 
 </body>
-</html>
-<!DOCTYPE html>
+</html>html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjay&chechew</title>
     <style>
+        /* Style de base */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -213,10 +179,6 @@
             font-size: 18px;
             margin: 10px 0;
         }
-        .product p {
-            color: #777;
-            font-size: 14px;
-        }
         .button {
             background-color: #333;
             color: white;
@@ -235,17 +197,26 @@
             margin: 20px auto;
             background-color: #ff6600;
         }
+        /* Style de la page d'accès avec code */
+        #codeAccess {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #productContainer {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Bienvenue sur Benjay&chechew</h1>
-    <p>Explorez une sélection de produits sans prix ni informations personnelles.</p>
+    <h1>Benjay&chechew</h1>
+    <p>Voir les produits et créer des paniers sans informations personnelles ni paiement</p>
 </header>
 
 <!-- Formulaire pour entrer un code -->
 <div id="codeAccess">
+    <h2>Accès sécurisé</h2>
     <form onsubmit="checkCode(event)">
         <label for="codeInput">Entrez le code pour accéder au site :</label>
         <input type="text" id="codeInput" placeholder="Entrez le code ici" required>
@@ -253,47 +224,39 @@
     </form>
 </div>
 
-<!-- Conteneur des produits -->
-<div id="productContainer" style="display:none;">
+<!-- Conteneur des produits (caché par défaut) -->
+<div id="productContainer">
     <div class="container">
-        <!-- Exemple de produit 1 -->
+        <!-- Produit 1 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 1">
             <h3>Produit 1</h3>
-            <p>Exemple de produit Shein - Description sans prix</p>
+            <p>Produit de démonstration</p>
             <button class="button" onclick="addToCart('Produit 1')">Ajouter au panier</button>
         </div>
-        <!-- Exemple de produit 2 -->
+        <!-- Produit 2 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 2">
             <h3>Produit 2</h3>
-            <p>Exemple de produit Shein - Description sans prix</p>
+            <p>Produit de démonstration</p>
             <button class="button" onclick="addToCart('Produit 2')">Ajouter au panier</button>
         </div>
-        <!-- Exemple de produit 3 -->
+        <!-- Produit 3 -->
         <div class="product">
             <img src="https://via.placeholder.com/200" alt="Produit 3">
             <h3>Produit 3</h3>
-            <p>Exemple de produit Shein - Description sans prix</p>
+            <p>Produit de démonstration</p>
             <button class="button" onclick="addToCart('Produit 3')">Ajouter au panier</button>
         </div>
     </div>
 
     <!-- Panier -->
-    <button id="cartButton" onclick="viewCart()">Voir mon panier</button>
-</div>
-
-<!-- Affichage du panier -->
-<div id="cartModal" style="display:none; padding: 20px; background-color: white; border-radius: 8px; margin: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-    <h3>Votre Panier</h3>
-    <ul id="cartItems"></ul>
-    <button onclick="closeCart()">Fermer</button>
+    <button id="cartButton" onclick="shareCart()">Partager le panier</button>
 </div>
 
 <script>
-    // Code d'accès
+    // Code d'accès requis pour afficher les produits
     const correctCode = "0326";
-    let cart = [];
 
     function checkCode(event) {
         event.preventDefault();
@@ -306,31 +269,32 @@
         }
     }
 
-    // Ajouter un produit au panier
-    function addToCart(productName) {
-        cart.push(productName);
-        alert(productName + " a été ajouté au panier.");
+    // Panier vide au départ
+    let cart = [];
+
+    // Fonction pour ajouter un produit au panier
+    function addToCart(product) {
+        cart.push(product);
+        alert(product + " a été ajouté au panier !");
     }
 
-    // Afficher le panier
-    function viewCart() {
-        let cartList = document.getElementById('cartItems');
-        cartList.innerHTML = ''; // Clear current cart
+    // Fonction pour partager le contenu du panier
+    function shareCart() {
         if (cart.length === 0) {
-            cartList.innerHTML = '<li>Votre panier est vide.</li>';
-        } else {
-            cart.forEach(item => {
-                let li = document.createElement('li');
-                li.textContent = item;
-                cartList.appendChild(li);
-            });
+            alert("Le panier est vide.");
+            return;
         }
-        document.getElementById('cartModal').style.display = 'block';
-    }
-
-    // Fermer le panier
-    function closeCart() {
-        document.getElementById('cartModal').style.display = 'none';
+        const cartContents = cart.join(", ");
+        const shareText = `J'ai ajouté ces produits à mon panier : ${cartContents}`;
+        if (navigator.share) {
+            navigator.share({
+                title: "Mon panier Benjay&chechew",
+                text: shareText,
+                url: window.location.href
+            });
+        } else {
+            alert("Partagez manuellement : " + shareText);
+        }
     }
 </script>
 
